@@ -1,8 +1,4 @@
 <template>
-  <!-- <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div> -->
   <div class="container">
     <router-view />
     <Footer />
@@ -28,13 +24,6 @@ export default {
     });
 
     provide("global", global);
-
-    // onMounted(() => {
-    // route.push("/login");
-    // alert(global.isLogin);
-    // if (!global.isLogin) {
-    // }
-    // });
   },
 };
 </script>

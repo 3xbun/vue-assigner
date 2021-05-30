@@ -269,4 +269,11 @@ export default {
   border-radius: 4px;
   background-color: red;
 }
+
+@media only screen and (max-width: 375px) {
+  .days-header > span,
+  .days > span {
+    width: 40px;
+  }
+}
 </style>
