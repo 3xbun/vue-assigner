@@ -1,30 +1,89 @@
 <template>
-  <div id="nav">
+  <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
+  </div> -->
+  <div class="container">
+    <router-view />
+    <Footer />
   </div>
-  <router-view />
 </template>
 
+<script>
+import { provide, reactive } from "vue";
+import Footer from "./components/Footer";
+
+export default {
+  name: "App",
+  components: {
+    Footer,
+  },
+  setup() {
+    const global = reactive({
+      isLogin: false,
+      currentMonth: 0,
+      selectedDay: "",
+      workOfDay: {},
+      workOfMonth: [],
+    });
+
+    provide("global", global);
+
+    // onMounted(() => {
+    // route.push("/login");
+    // alert(global.isLogin);
+    // if (!global.isLogin) {
+    // }
+    // });
+  },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
+
+:root {
+  --blue: #1da1f2;
+  --dark-blue: #243447;
+  --white: #fff;
+  --black: #151e29;
+  --red: #ff333a;
+  --grey: #657786;
+  --light-grey: #aab8c2;
+  --dark-grey: #1b2737;
 }
 
-#nav {
-  padding: 30px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-#nav a {
+a {
+  color: inherit;
+  text-decoration: none;
   font-weight: bold;
-  color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+li {
+  list-style: none;
+}
+
+body {
+  background: var(--black);
+  font-family: "Prompt", sans-serif;
+  color: var(--white);
+}
+
+.container {
+  margin: auto;
+  width: 85vw;
+  max-width: 600px;
+}
+
+@media screen and (max-width: 425px) {
+  body {
+    font-size: 10px;
+  }
 }
 </style>
